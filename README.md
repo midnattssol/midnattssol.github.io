@@ -4,13 +4,13 @@ My personal website.
 
 ## TODO
 
-- [.] Check overlap with projects and focus them if so on mobile and 1-wide layout so the arrow animates
-- [.] Link all sources and clean them all up
-- [.] Improve look of initial and final contact sections
-- [.] Add all technologies somehow?
-- [.] Adding background images for the projects might be cool
-- [.] Light mode?
-- [.] Resize icons according to the flexible sizes
+- [ ] Check overlap with projects and focus them if so on mobile and 1-wide layout so the arrow animates
+- [ ] Link all sources and clean them all up
+- [ ] Improve look of initial and final contact sections
+- [ ] Add all technologies somehow?
+- [ ] Adding background images for the projects might be cool
+- [ ] Light mode?
+- [ ] Resize icons according to the flexible sizes
 
 ## Sources
 
