@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Leo Lundby Murigu</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div class="section section--initial">
+            <div class="outlined-media--round fade" id="initial-picture-of-me">
+                <img class="outlined-media__image" src="images/me.jpg" />
+            </div>
+            <div class="flex flex--cols flex--align-center">
+                <h1 class="section--top__main-title fade">Leo Lundby Murigu</h1>
+                <span class="fade"><span class="icon">󰍎</span>&ensp;Kalmar, 20. Brinner för programmering, datavetenskap, och matematik.</span>
+                <span class="fade"><span class="icon"></span>&ensp;<a href="mailto:leolm.mail@gmail.com">leolm.mail@gmail.com</a>&ensp;|&ensp;
+                <span class="icon"></span>&ensp;<a href="tel:+469739575">+46&nbsp;73&nbsp;915&nbsp;95&nbsp;75</a>&ensp;|&ensp;
+                <span class="icon"></span>&ensp;<a href="https://github.com/midnattssol">GitHub</a></span>
+            </div>
+        </div>
+        <div class="section">
+            <h2 class="fade">Om mig</h2>
+            <p class="fade">
+                Hej, jag heter Leo! Jag är en 20-årig student från Kalmar som älskar programmering,
+                matematik, och språkforskning. På min fritid spelar jag schack,
+                läser mycket, och lär mig gärna nya språk. Jag tycker också om
+                att laga mat och baka.
+            </p>
+            <p class="fade">
+                Ända sedan jag först lärde mig programmera i Java på en gammal skoldator
+                har jag alltid velat förstå hur de tekniska system jag dagligen
+                använder fungerar. Många av mina projekt handlar om att själv förstå
+                hur teknologier som kompilering, assembly-språk, och operativsystem
+                fungerar, och jag brukar försöka att själv implementera dessa projekt
+                för att få en djupare förståelse av ämnet. Dessa projekt
+                har låtit mig få hands-on erfarenhet med flera intressanta
+                teknologier och att arbeta på komplexare kodbaser.
+            </p>
+            <p class="fade">
+                Jag har ett stort matematikintresse, och tycker om att lära mig mer om
+                överlappningen mellan datavetenskap och matematik. Algoritmisk komplexitet, datastrukturer,
+                formell korrekthet, typsystem och kategoriteori är några av de fält jag intresserat mig mest för.
+                Jag brinner för att skapa lättlästa lösningar till svåra problem och
+                strävar efter att skriva kod som är elegant, effektiv, och som jag
+                hade velat läsa själv.
+            </p>
+            <p class="fade">
+                Ett av mina större projekt hittills är att skapa ett lokalt multi-agent LLM-system med en lokal vektordatabas optimerad för att organisera information på min dator, hämta egna källor från Internet, som kombinerar lokal och cloud-lösningar för LLM-system. Ett annat projekt som jag har arbetat på är mitt egna funktionella programmeringsspråk Cinnamon, som grundats på den forskning om typsystem jag gjorde i mitt gymnasiearbete.
+            </p>
+        </div>
+        <div class="section flex flex--cols">
+            <h2 class="fade">Mina projekt</h2>
+            <p class="fade">Jag tror starkt på <i>learn by doing</i> och att skapa projekt som utmanar mig och som jag lär mig nya saker från.</p>
+            <div class="fade card-container--selected">
+                <div class="fullwidth project-card">
+                    <div>
+                        <span class="project-card__overline">Utvalt projekt</span>
+                        <h4>Filbaserat AI-system</h4>
+                        <p>
+                            En plattform som tillåter LLM-system att skriva och köra egen kod på ett säkert sätt, tillsammans med en hybriddatabas som blandar vector encoding och taggar för RAG (retrieval-augmented generation), designad specifikt för att minska läckage av personuppgifter.
+                        </p>
+                    </div>
+                    <div class="flex--wrap project-card__buttons flex--responsive">
+                        <a href="./project-llm.html" class="button button--read-more">Läs mer&ensp;
+                        <span class="button--primary__arrow"><span class="icon">⟶</span></span>
+                        </a>
+                        <a href="https://github.com/midnattssol/llm-interface" class="button">Källkod&ensp;
+                        <span class="icon"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="fullwidth project-card">
+                    <div>
+                        <span class="project-card__overline">Utvalt projekt</span>
+                        <h4>Animationsbibliotek i Python</h4>
+                        <p>
+                            Detta projekt inspirerades bland andra av manim och de stilrena animationer denna kunde utföra.
+                            Biblioteket har gett mig praktisk erfarenhet av att arbeta med bildbehandling och visualisering i Python, och att använda olika NumPy-operationer för att optimera programmets prestanda.
+                        </p>
+                    </div>
+                    <div class="project-card__buttons flex--responsive">
+                        <a href="https://github.com/midnattssol/animations" class="button">Källkod&ensp;
+                        <span class="icon"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="fullwidth project-card">
+                    <div>
+                        <span class="project-card__overline">Utvalt projekt</span>
+                        <h4>Ett eget programmeringsspråk</h4>
+                        <p>
+                            Cinnamon är mitt fleråriga projekt att skapa ett eget programmeringsspråk. Under dess gång har jag ökat min kunskap om språkdesign, syntax och semantik. Jag har även utvecklat färdigheter inom lexikal analys, syntaxanalys och kompilering, samt en förståelse av hur man hanterar kompilering av olika datatyper, mönstermatchning och högre ordningens funktioner.
+                        </p>
+                    </div>
+                    <div class="flex--wrap project-card__buttons flex--responsive">
+                        <a href="./project-programming-language.html" class="button button--read-more">Läs mer&ensp;
+                            <span class="button--primary__arrow"><span class="icon">⟶</span></span>
+                        </a>
+                        <a href="https://github.com/midnattssol/cinnamon" class="button">Källkod&ensp;
+                        <span class="icon"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <h3 class="fade">Fler projekt</h3>
+            <div class="fade card-container--small-projects">
+                <div class="card-container--small-projects__card">
+                    <div>
+
+                    <h5>Simulera språkförändring</h5>
+                    <p>
+                        Applicera hundratals fonetiska processer inom mänskliga språk och förutsäg dagens ord från språk som talades för tusentals år sedan.
+                    </p>
+                </div>
+                    <div class="project-card__buttons flex--responsive">
+                        <a href="https://github.com/midnattssol/animations" class="button">Källkod&ensp;
+                        <span class="icon"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-container--small-projects__card">
+                    <div>
+                    <h5>Renderer för strange attractors</h5>
+                    <p>En <a href="https://en.wikipedia.org/wiki/Attractor#Strange_attractor"><i>strange attractor</i></a> är ett matematiskt objekt inom studier av kaotiska system. Denna programvara renderar bilder av dessa attraktorer.</p>
+                </div>
+                    <div class="project-card__buttons flex--responsive">
+                        <a href="https://github.com/midnattssol/strangeattractor" class="button">Källkod&ensp;
+                        <span class="icon"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-container--small-projects__card">
+                    <div>
+
+                    <h5>Wikipedia-bot</h5>
+                    <p>En bot som använder sig av <a href="https://doc.wikimedia.org/pywikibot/master/index.html">pywikibot</a> för att semiautomatiskt utföra massredigeringar på Wikipedia.</p>
+                </div>
+                    <div class="project-card__buttons flex--responsive">
+                        <a href="https://github.com/midnattssol/wikipedia-atomvinterbot" class="button">Källkod&ensp;
+                        <span class="icon"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-container--small-projects__card">
+                    <div>
+                    <h5>Widgets</h5>
+                    <p>Mitt egna bibliotek för att skriva widgets som jag använder dagligen.</p>
+                </div>
+                <div class="project-card__buttons flex--responsive">
+                    <a href="https://github.com/midnattssol/shortcake" class="button">Källkod&ensp;
+                    <span class="icon"></span>
+                    </a>
+                </div>
+
+                </div>
+                <div class="card-container--small-projects__card">
+                    <div>
+                    <h5>Personlig hemsida</h5>
+                    <p>Denna hemsida är skriven i HTML, CoffeeScript, och SCSS och hostad genom GitHub Pages.</p>
+                </div>
+                <div class="project-card__buttons flex--responsive">
+                    <a href="https://github.com/midnattssol/midnattssol.github.io" class="button">Källkod&ensp;
+                    <span class="icon"></span>
+                    </a>
+                </div>
+                </div>
+                <div class="card-container--small-projects__card">
+                    <div>
+                    <h5>Trinär virtuell maskin</h5>
+                    <p>En trinär dator och ett assemblyspråk som utforskar hur <a href="https://en.wikipedia.org/wiki/Setun">Setun-datorserien</a> hade kunnat sett ut om den hade fortsatt framåt.</p>
+                </div>
+                <div class="project-card__buttons flex--responsive">
+                    <a href="https://github.com/midnattssol/lepidodendron" class="button">Källkod&ensp;
+                    <span class="icon"></span>
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="flex flex--cols flex--spaced">
+                <h2 class="fade">Mina styrkor</h2>
+
+                <!-- <div class="flex flex--cols fullwidth flex--spaced">
+                        <div class="flex flex--rows fullwidth flex--end-aligned flex--align-center flex--spaced">
+                            <div class="icon-holder--square-medium"><span class="icon--medium"></span></div>
+                            <div class="icon-holder--square-medium"><span class="icon--medium"></span></div>
+                            <div class="icon-holder--square-medium"><span class="icon--medium"></span></div>
+                            <div class="icon-holder--square-medium"><span class="icon--medium"></span></div>
+                            <div class="icon-holder--square-medium"><span class="icon--medium"></span></div>
+                            <div class="icon-holder--square-medium"><span class="icon--medium"></span></div>
+                        </div>
+
+                        <div class="flex flex--rows fullwidth flex--end-aligned flex--align-center flex--spaced">
+                            <div class="icon-holder--square-medium"><span class="icon--medium"></span></div>
+                            <div class="icon-holder--square-medium"><span class="icon--medium"></span></div>
+                            <div class="icon-holder--square-medium"><span class="icon--medium"></span></div>
+                            <div class="icon-holder--square-medium"><span class="icon--medium"></span></div>
+                            <div class="icon-holder--square-medium"><span class="icon--medium">󱆃</span></div>
+                            <div class="icon-holder--square-medium"><span class="icon--medium"></span></div>
+                        </div>
+                    </div> -->
+
+                <div class="flex flex--rows flex--align-center flex--spaced fade items-strength">
+                    <div class="items-strength__icon">
+                        <div class="icon-holder--circle-large">
+                            <code class="icon--large"></code>
+                        </div>
+                    </div>
+                    <p class="twelve-columns">
+                        <b>Python.</b> Jag har programmerat i Python i 7-8 år och har även
+                        laddat upp flera packages till <a href="https://pypi.org/">pypi</a>.
+                        Detta har gjort mig välbekant med standardbibliotekets moduler,
+                        NumPy, Flask, och flera andra vanliga Python-moduler.
+                    </p>
+                </div>
+                <div class="flex flex--rows flex--align-center flex--spaced fade items-strength">
+
+                    <div class="items-strength__icon">
+                        <div class="icon-holder--circle-large">
+                            <code class="icon--large"></code>
+                        </div>
+                    </div>
+                    <p class="twelve-columns">
+                        <b>Git & GitHub.</b> Jag använder aktivt Git och GitHub för
+                        versionshantering och samarbete på olika projekt. Jag använder också GitHub Pages för att hosta denna webbsida.
+                    </p>
+                </div>
+                <div class="flex flex--rows flex--align-center flex--spaced fade items-strength">
+                    <div class="items-strength__icon">
+                        <div class="icon-holder--circle-large">
+                            <code class="icon--large"></code>
+                        </div>
+                    </div>
+                    <p class="twelve-columns">
+                        <b>Linux och Bash.</b> Jag har använt Linux som min primära
+                        utvecklingsmiljö under flera år. Genom att arbeta med Linux har jag
+                        utvecklat färdigheter inom Bash, filhantering,
+                        pakethantering och systemadministration.
+                    </p>
+                </div>
+                <div class="flex flex--rows flex--align-center flex--spaced fade items-strength">
+
+                    <div class="items-strength__icon">
+                        <div class="icon-holder--circle-large">
+                            <code class="icon--large">󰦻</code>
+                        </div>
+                    </div>
+                    <p class="twelve-columns">
+                        <b>Flexibilitet.</b> Jag är van vid att lära mig nya programmeringsspråk
+                        och har bland andra använt mig av C, C++, Rust, Haskell, CoffeeScript, JavaScript, och Python.
+                        Jag tycker om att skaffa nya kompetenser, lär mig snabbt, och ser fram emot
+                        att få ta del av fler programmeringsspråk och frameworks i framtiden.
+                    </p>
+                </div>
+                </div>
+
+<!--
+                <p>Jag har även erfarenhet med bland andra följande teknologier:</p>
+
+                        <ul>
+                            <li><span class="icon"></span> Python</li>
+                            <ul>
+                                <li>Flask</li>
+                                <li>NumPy</li>
+                                <li>Cython</li>
+                                <li>pip & pypi</li>
+                            </ul>
+                            <li><span class="icon"></span> C</li>
+                            <li><span class="icon"></span> C++</li>
+                            <li><span class="icon"></span> Haskell</li>
+                            <li><span class="icon"></span> Rust</li>
+                            <li><span class="icon"></span> SCSS</li>
+                            <li><span class="icon"></span> HTML</li>
+                            <li><span class="icon"></span> Git</li>
+                            <li><span class="icon"></span> GitHub</li>
+                            <li><span class="icon"></span> Vektordatabaser</li>
+                            <li><span class="icon">󰚩</span> LLM-teknologi</li>
+                        </ul>
+                </div> -->
+
+
+        </div>
+        <div class="fade section">
+            <h2>Kontakta mig</h2>
+            <div class="flex flex--cols">
+                <span><span class="icon"></span>&ensp;<a href="mailto:leolm.mail@gmail.com">leolm.mail@gmail.com</a></span>
+                <span><span class="icon"></span>&ensp;<a href="tel:+469739575">+46&nbsp;73&nbsp;915&nbsp;95&nbsp;75</a></span>
+                <span><span class="icon"></span>&ensp;<a href="https://github.com/midnattssol">GitHub</a></span>
+            </div>
+        </div>
+        <footer>
+            <div>
+                <div class="icon">󱤹</div>
+                Källkoden för denna sida är <a href="#TODO">fritt tillgänglig</a> under GPL-3-licensen.
+            </div>
+        </footer>
+    </body>
+</html>

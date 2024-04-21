@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt: AI-modeller</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+<div class="section">
+
+
+<div class="button--back-to-home">
+    <a href="./core.html"><span class="icon"></span> Tillbaka till huvudsidan</a>
+</div>
+
+<h1>Projekt: AI-modeller</h1>
+
+<i class="metadata metadata--post-date">Senast ändrad den 17 april 2024</i>
+<br>
+<i class="metadata metadata--author-name">Leo Lundby Murigu</i>
+
+<div class="box-warning">
+    Denna sida, och projektet som den handlar om, utvecklas aktivt och är därför kanske inte helt komplett.
+</div>
+
+
+<p>Detta projekt började med att jag höll på att organisera min dator. Vid denna tidpunkt bestod den av en massiv osorterad blandning av projekt, filmer, bilder, och dokument, som jag flera gånger tidigare försökt men misslyckats få ordning på. Jag ville därför skapa en sökfunktion med ett taggsystem för att enkelt hitta olika filer och projekt.</p><p>Samtidigt hade jag också börjat förstå den stora potentialen hos program som tillåter LLM-system att skriva och köra egen kod. Jag hade också nyligen lärt mig om hierarkiska grupper av LLM-er som kan skapa egna kopior för att utföra delprojekt, något som jag tänkte kunde kombineras för att skriva kod och längre texter genom tekniker som <a href="https://writing.wisc.edu/handbook/reverseoutlines/">reverse outlinings</a>.
+</p>
+
+
+<p>
+    Jag kände också att det fanns ett utrymme för ett program som använder sig av lokal RAG (retrieval-augmented generation) som inte laddar upp känslig data till OpenAI eller andra AI-bolag för andra än storföretag som har råd att skapa en egen AI-lösning. Resultatet blev detta projekt, som använder sig av en kombination av lokala LLM-system och OpenAIs API tillsammans med ett domänspecifikt programmeringsspråk (DSL) utvecklat för just detta syfte.
+</p>
+<p>
+    Idag är projektet fortfarande under uppbyggnad, men har över tid utvecklats till en kombination av LLM-teknologi, en vektordatabas, och en databas grundad på logikprogrammering.
+</p>
+
+<h2>Sökfunktion</h2>
+
+<p>
+    Projektets sökfunktion grundar sig på <a href="https://en.wikipedia.org/wiki/Logic_programming">relationell programmering</a>, där den skapar ett <a href="https://www.wikidata.org/wiki/Wikidata:Main_Page">Wikidata</a>-liknande system med taggar och relationer. Denna information sparas i en lokal databas, som kan utökas manuellt, av lokala LLM-er, cloud-LLM-er, eller genom Wikidata. Utökningen kan även ske automatiskt utifrån användarinput. Om användaren exempelvis uttrycker att en film verkar intressant kan LLM-en själv välja att spara denna information "permanent". Detta filsystem utgör LLM-ens "långtidsminne", där strukturerad data gör det möjligt att dra slutsatser beroende på en mängd faktorer.
+</p>
+
+<p>
+    LLM-en används för att utföra <i>defuzzification</i>, det vill säga omvandla otydliga instruktioner från en människa till tydlig kod som interagerar med en uppsättning API-er och den centrala databasen för att få ett resultat.
+
+    Detta gör det möjligt att söka på exempelvis "författare till böcker skrivna efter 1980" eller "programmeringsprojekt som behöver arbetas vidare på", genom att låta en LLM översätta detta till relationella programmeringssuttryck.
+     <!-- Som exempel skulle det första uttrycket kunna översättas till följande: -->
+</p>
+
+<!-- <code> <pre>
+    :- writer(Book, X)
+    :- dateWritten(Book, Date)
+    :- Date > 1980
+    X
+</pre>
+</code> -->
+
+<p>
+Detta tillämpas tillsammans med två andra funktioner för att enklare hitta information:
+</p>
+
+<ul>
+    <li><p><b>Hashning.</b> Att skapa en unik hash för varje fil fungerar bra för filmer och PDFer, som inte brukar ändras, men lämpar sig mindre för anteckningar som ofta ändras i hash från dag till dag. Detta gör det möjligt att hitta filmer och liknande även om de byter användarnamn.</p>
+    </li>
+    <li><p><b><a href="https://en.wikipedia.org/wiki/Word_embedding">Vector embeddings</a>.</b> Vector embeddings representerar text som punkter i en matematisk rymd så att embeddingen hos text med ligger nära embeddings av andra texter med liknande mening. Detta gör det möjligt att söka i en databas på innehåll utan att texten exakt behöver matcha sökordet, men fungerar bara för text. Den kan också vara mindre lämplig för böcker och andra stora mängder text.</p>
+</li>
+</ul>
+<p>
+Jag utvecklade en egen lösning för att <a href="https://huggingface.co/blog/embedding-quantization">kvantisera</a> vector embeddings för att öka hastighet och minska databasens storlek. Eftersom att min databas är relativt liten görs detta utan hänsyn till vektorernas innehåll, även om det hade varit lätt att lägga till i efterhand.
+</p>
+
+<h2>LLM-lösningar</h2>
+
+<p>
+    Programmet använder sig av en grupp olika LLM-er för att lösa problem. Jag använder både <a href="https://platform.openai.com">OpenAIs API</a> och lokala modeller som Mistral, och eftersom att dessa alla använder sig av samma slags API är det lätt att integrera nya system.
+</p>
+<p>
+
+    Detta program kan alltså ta del av information från den lokala databasen och flera APIer. De APIer jag hittills har integrerat är bland andra delar av
+
+    <a href="https://openlibrary.org/developers/api">openlibrary</a> för PDFer och böcker,
+    <a href="https://github.com/fawazahmed0/exchange-api">exchange-api</a> för valutor, och
+    <a href="https://api.wikimedia.org/wiki/Main_Page">Wikimedia</a> för Wikipedia och dess systerprojekt
+
+</p>
+<p>
+
+    I linje med <i><span style="font-variant: small-caps;">Demonstrate–Search–Predict</span>: Composing retrieval and language models for knowledge-intensive NLP</i> av Khattab et al.
+    använder sig programmet av flera RAG-omgångar per lösning.
+</p>
+
+
+<p>
+    Det finns flera säkerhetsnivåer för att hindra att information läcker ut. Varje LLM och API ges en egen "behörighetsnivå", och LLM-er med en högre behörighetsnivå kan inte kommunicera med API-er av en lägre behörighetsnivå utan manuellt godkännande. Behörighetsnivån avgör även vilken information LLM-en kan ta del av. Detta undviker att exempelvis personinformation, address, och annan information "läcks ut" till OpenAI.
+</p>
+
+<p>
+    Samtidigt kan säkerhetsnivåerna variera inom filer. För nuvarande har informationsobjekt följande attribut:
+</p>
+
+    <ul>
+        <li><p><b>Läs objektnamn.</b> Avgör om LLM-en får veta att objektet existerar eller inte.</p></li>
+        <li><p><b>Läs attributnamn.</b> Om LLM-en har tillåtelse att göra detta kan den ta del av attributnamn samt dess typer.</p></li>
+        <li><p><b>Läs innehåll.</b> Om LLM-en har tillåtelse att göra detta kan den läsa innehållet i filen.</p></li>
+    </ul>
+
+    <p>
+    Detta tillåter LLM-modeller att köra queries på informationsobjekt utan att känna till informationen. Ett enkelt exempel är frågeställningen "hur mycket spenderade jag genomsnittligen på mat veckovis det senaste året?", som kan besvaras av en LLM-modell som inte kan ta del av personlig data genom att skriva ett skript som sedan kan köras lokalt för att ta del av informationen. Genom att kedja samman dessa förfrågningar kan komplicerade uppgifter köras av agenter som inte litas på till 100%.
+
+<!-- <code><pre>
+    LLM: vector_retrieve("transactions")
+
+    Database: [
+        MatchingObject(0.93, Transaction: Datatype)
+        MatchingObject(0.75, "Transactions of the American Mathematical Society": AcademicJournal)
+    ]
+
+    LLM: get_attributes(Transaction)
+
+    Database: [time: Timestamp, amount: CurrencyAmount, origin: FinancialEntity, target: FinancialEntity, notes: string ...]
+
+    sum(x.cost if x.category == "Food" for x in transactions)
+    RAG:
+</pre></code> -->
+
+</p>
+
+
+<!-- <p>Jag såg framför mig en lokal AI-modell med tillgång till alla filer på min dator, som kunde hjälpa mig att hitta, sammanställa, och samla information. Denna modell skulle behöva interagera med datorn på ett säkert sätt utan att läcka ut mina personuppgifter, varken medvetet eller genom felskriven kod.</p> -->
+
+
+<!-- <p>
+    Jag ville även att användare skulle kunna välja själva mellan lokala och cloud-modeller. Även om cloud-modellerna oftast är mycket mer effektiva, kan lokala modeller hantera känslig information som personuppgifter utan att dela detta med ett företag.
+</p>
+
+
+<p>som tillåter användare att själva bestämma hur stor tillgång systemet ska ha till dess filer. Samtidigt tillåter systemets olika säkerhetsnivåer användaren att avgöra vilka filer som kan laddas upp till
+
+samtidigt som den kan använda sig av information inom filsystemet för att optimera för den specifika användaren.
+
+Naturligtvis finns det dock flera problem med detta. Ett tydligt problem är att LLM-system inte är tillräckligt pålitliga för att skriva egen oskyddad kod, särskilt inte i samma system som en privatperson redan använder.</p>
+
+
+<p>
+Lösningar som OpenAIs <a href="https://openai.com/gpt-4">GPT&nbsp;4-subscription</a> kan också skriva och exekvera kod, men jag ville testa om en lokal lösning var
+Trots att detta tillåter LLM-systemet att göra vad den vill finns det vissa problem, som uppladdning av personuppgifter till OpenAI.
+</p>
+
+
+<p>Jag såg stor potential hos
+
+
+arbeta med känslig data utan att behöva ladda upp den till exempelvis OpenAI.
+
+För att minska säkerhetsproblemen med detta utvecklade jag ett domänspecifikt programmeringsspråk (DSL) just för detta syfte, tillsammans med en lokal vektordatabas med ett taggsystem för RAG (retrieval-augmented generation).</p> -->
+
+<h2>Källor</h2>
+<ol>
+    <li>
+         Khattab et al. "<span style="font-variant: small-caps;">Demonstrate–Search–Predict</span>: Composing retrieval and language models for knowledge-intensive NLP".
+    </li>
+</ol>
+</div>
+
+<footer>
+    <div>
+        <div class="icon">󱤹</div>
+        Källkoden för denna sida är <a href="#TODO">fritt tillgänglig</a> under GPL-3-licensen.
+    </div>
+</footer>
+</body>
+</html>
